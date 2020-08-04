@@ -1,21 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Prefabs/Pallete.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Boundary.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
 
-[node name="Pallete Left" parent="." instance=ExtResource( 1 )]
-position = Vector2( 29.4976, 124.455 )
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Pallete Left" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 28.8804, 133.916 )
 horizontalPadding = 25.0
 isLeft = true
 speed = 100.0
 
-[node name="Pallete Right" parent="." instance=ExtResource( 1 )]
-position = Vector2( 451.64, 121.981 )
+[node name="Pallete Right" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 448.549, 128.259 )
 horizontalPadding = 25.0
 speed = 100.0
 
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="Boundary Upper" parent="Boundaries" instance=ExtResource( 3 )]
+position = Vector2( 232.992, -9.54597 )
+isUpper = true
+
+[node name="Boundary Lower" parent="Boundaries" instance=ExtResource( 3 )]
+position = Vector2( 238.296, 280.722 )
+
+[node name="Goals" type="Node2D" parent="."]
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-speedX = 150.0
-speedY = 150.0
+position = Vector2( 238.749, 134.977 )
+speedX = 50.0
+speedY = 100.0
+initialAngle = 70.0
