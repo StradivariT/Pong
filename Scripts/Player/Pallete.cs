@@ -17,12 +17,7 @@ public class Pallete : KinematicBody2D {
     private bool downPressed;
 
     public override void _Ready() {
-        float viewportWidth = this.GetViewport().GetVisibleRect().Size.x;
-        float viewportHeight = this.GetViewport().GetVisibleRect().Size.y;
-
-        float posX = this.isLeft ? this.horizontalPadding : viewportWidth - this.horizontalPadding;
-
-        this.Position = new Vector2(posX, viewportHeight / 2);
+        this.SetInitialPosition();
 
         this.side = this.isLeft ? "Left" : "Right";
     }
@@ -51,5 +46,14 @@ public class Pallete : KinematicBody2D {
             this.MoveAndSlide(new Vector2(0, this.speed));
 
         this.isReadyToClearInputs = true;
+    }
+
+    public void SetInitialPosition() {
+        float viewportWidth = this.GetViewport().GetVisibleRect().Size.x;
+        float viewportHeight = this.GetViewport().GetVisibleRect().Size.y;
+
+        float posX = this.isLeft ? this.horizontalPadding : viewportWidth - this.horizontalPadding;
+
+        this.Position = new Vector2(posX, viewportHeight / 2);
     }
 }

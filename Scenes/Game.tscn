@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prefabs/Pallete.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/Boundary.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/GameManager/GameManager.cs" type="Script" id=5]
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -30,8 +33,16 @@ position = Vector2( 238.296, 280.722 )
 
 [node name="Goals" type="Node2D" parent="."]
 
+[node name="Goal Left" parent="Goals" instance=ExtResource( 4 )]
+position = Vector2( -10.6066, 136.118 )
+isLeft = true
+
+[node name="Goal Right" parent="Goals" instance=ExtResource( 4 )]
+position = Vector2( 491.794, 123.744 )
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 238.749, 134.977 )
-speedX = 50.0
-speedY = 100.0
+speedX = 200.0
+speedY = 200.0
 initialAngle = 70.0
+increment = 5.0
